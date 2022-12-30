@@ -1,0 +1,61 @@
+<main class="flex-shrink-0">
+    <div class="container">
+
+        <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{errorMessage}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div> -->
+
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Login</h5>
+            </div>
+            <div class='card-body'>
+
+                <form (ngSubmit)="login(loginForm)" #loginForm="ngForm" class="row g-3">
+
+
+                    <div class="col-md-6">
+                        <label>Username<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Inserire l'username" required minlength="2"
+                            id="username" name="username" [(ngModel)]="utente.username" #usernameVar="ngModel"
+                            [ngClass]="{'is-invalid': (usernameVar.touched || usernameVar.dirty) && !usernameVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="usernameVar.errors?.['required']">
+                                Prego inserire un valore
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Password<span class="text-danger">*</span></label>
+                        <input type="password" class="form-control" placeholder="Inserire la password" required minlength="2"
+                            id="password" name="password" [(ngModel)]="utente.password" #passwordVar="ngModel"
+                            [ngClass]="{'is-invalid': (passwordVar.touched || passwordVar.dirty) && !passwordVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="passwordVar.errors?.['required']">
+                                Prego inserire un valore
+                            </span>
+                            <span *ngIf="passwordVar.errors?.['pattern']">
+                                La pwd non rispetta le richieste sui caratteri
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" name="submit" value="submit" id="submit"
+                            class="btn btn-primary"  [disabled]="loginForm.invalid" >Login</button>
+                    </div>
+
+                </form>
+
+
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+        </div>
+        <!-- end container -->
+    </div>
+
+    <!-- end main -->
+</main>
