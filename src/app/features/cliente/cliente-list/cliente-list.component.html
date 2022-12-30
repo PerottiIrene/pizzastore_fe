@@ -1,1 +1,59 @@
-<p>cliente-list works!</p>
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+    <div class="container">
+
+        <div class="alert alert-success alert-dismissible fade show " role="alert" *ngIf="confirmMessage">
+            {{confirmMessage}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Lista dei risultati</h5>
+            </div>
+            <div class='card-body'>
+                <a class="btn btn-primary " routerLink="/cliente/create">Add New</a>
+
+                <div class='table-responsive'>
+                    <table class='table table-hover'>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nome</th>
+                                <th>Cognome</th>
+                                <th>Indirizzo</th>
+                                <th>Attivo</th>
+                                <th>Azioni</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let clienteItem of clienti" [routerLink]="['/cliente',clienteItem.id]">
+                                <td>{{clienteItem.id}}</td>
+                                <td>{{clienteItem.nome}}</td>
+                                <td>{{clienteItem.cognome}}</td>
+                                <td>{{clienteItem.indirizzo}}</td>
+                                <td>{{clienteItem.attivo }}</td>
+                                <td> <a
+                                    class="btn me-2  btn-sm btn-outline-secondary"
+                                    [routerLink]="['/cliente/detail', clienteItem.id]">Visualizza</a> 
+                            
+                                    <a 
+                                    class="btn me-2  btn-sm btn-outline-primary"
+                                    [routerLink]="['/cliente/edit', clienteItem.id]">Modifica</a> 
+                                    <a 
+                                    class="btn me-2  btn-sm btn-outline-danger"
+                                    [routerLink]="['/cliente/delete', clienteItem.id]">Elimina</a> 
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+        </div>
+
+        <!-- end container -->
+    </div>
+
+</main>

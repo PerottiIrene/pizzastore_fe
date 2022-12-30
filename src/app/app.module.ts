@@ -9,12 +9,10 @@ import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { AuthModule } from './core/auth/auth.module';
 import { LayoutModule } from './core/layout/layout.module';
 import { SharedModule } from './shared/shared.module';
-import { ClienteListComponent } from './features/cliente/cliente-list/cliente-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClienteListComponent
   ],
   imports: [
     BrowserModule,
