@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { AuthModule } from './core/auth/auth.module';
 import { WelcomeComponent } from './features/welcome/welcome/welcome.component';
+import { NavbarComponent } from './core/layout/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
