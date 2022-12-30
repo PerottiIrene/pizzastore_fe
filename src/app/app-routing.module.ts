@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/auth/auth.guard';
 
 const routes: Routes = [
-  {
+    {
     path:'welcome',
     loadChildren:()=> import('./features/welcome/welcome.module' ).then(m => m.WelcomeModule),
     canActivate:[AuthGuard]

@@ -7,21 +7,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { AuthModule } from './core/auth/auth.module';
-import { WelcomeComponent } from './features/welcome/welcome/welcome.component';
 import { NavbarComponent } from './core/layout/navbar/navbar.component';
+import { LayoutModule } from './core/layout/layout.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    WelcomeComponent,
-    NavbarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    AuthModule
+    AuthModule,
+    LayoutModule
   ],
   providers: [
     {
