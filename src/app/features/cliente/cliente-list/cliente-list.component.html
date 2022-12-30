@@ -32,7 +32,7 @@
                                 <td>{{clienteItem.nome}}</td>
                                 <td>{{clienteItem.cognome}}</td>
                                 <td>{{clienteItem.indirizzo}}</td>
-                                <td>{{clienteItem.attivo }}</td>
+                                <td>{{clienteItem.attivo | decodificaBoolean}}</td>
                                 <td> <a
                                     class="btn me-2  btn-sm btn-outline-secondary"
                                     [routerLink]="['/cliente/detail', clienteItem.id]">Visualizza</a> 
