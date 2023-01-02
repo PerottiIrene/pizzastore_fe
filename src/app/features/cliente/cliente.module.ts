@@ -9,6 +9,7 @@ import { ClienteCreateComponent } from './cliente-create/cliente-create.componen
 import { ClienteDetailComponent } from './cliente-detail/cliente-detail.component';
 import { ClienteUpdateComponent } from './cliente-update/cliente-update.component';
 import { ClienteDeleteComponent } from './cliente-delete/cliente-delete.component';
+import { ClienteSearchComponent } from './cliente-search/cliente-search.component';
 
 const routes:Routes=[
   {
@@ -32,6 +33,10 @@ const routes:Routes=[
     component:ClienteDeleteComponent
   },
   {
+    path:'search',
+    component:ClienteSearchComponent
+  },
+  {
     path:'',
     redirectTo:'list',
     pathMatch:'full'
@@ -44,7 +49,8 @@ const routes:Routes=[
     ClienteCreateComponent,
     ClienteDetailComponent,
     ClienteUpdateComponent,
-    ClienteDeleteComponent
+    ClienteDeleteComponent,
+    ClienteSearchComponent
   ],
   imports: [
     CommonModule,

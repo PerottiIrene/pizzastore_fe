@@ -1,0 +1,69 @@
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+    <div class="container">
+
+
+        <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="errorMessage">
+            {{errorMessage}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div> -->
+
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Ricerca elementi</h5>
+            </div>
+            <div class='card-body'>
+
+                    <div class="col-md-6">
+                        <label>Nome</label>
+                        <input type="text" class="form-control" placeholder="Inserire il nome"
+                            id="nome" name="nome"  >
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Cognome</label>
+                        <input type="text" class="form-control" placeholder="Inserire il cognome"
+                            id="cognome" name="cognome"  >
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Indirizzo</label>
+                        <input type="text" class="form-control" placeholder="Inserire indirizzo"
+                            id="indirizzo" name="indirizzo" >
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="attivo" class="form-label">Stato </label>
+                        <select class="form-select" id="attivo" name="attivo" >
+                            <option value="" selected> - Selezionare - </option>
+                              <option value="true" >Clienti attivi</option>
+                              <option value="false" >Clienti non attivi</option>
+                        </select>
+                    </div>
+
+                    <div class='card-footer'>
+                        <a class='btn me-2 btn-outline-danger' style='width:80px' (click)="searchCliente()">
+                          <i class='fa fa-chevron-left'></i> Ricerca 
+                       </a> 
+
+                    <input class="btn btn-outline-warning" type="reset" value="Ripulisci">
+
+                    <div class='card-footer'>
+                        <a routerLink="/cliente/list" class='btn btn-outline-secondary'
+                            style='width:80px'>
+                            <i class='fa fa-chevron-left'></i> Back
+                        </a>
+                    </div>
+
+
+
+
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+        </div>
+        <!-- end container -->
+    </div>
+
+    <!-- end main -->
+<!-- </main> -->

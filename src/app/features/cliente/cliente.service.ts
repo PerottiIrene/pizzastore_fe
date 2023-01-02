@@ -52,6 +52,11 @@ export class ClienteService {
     return this.http.delete<boolean>(this.apiServer + '/' + idInput.toString(), this.httpOptions)
   }
 
+    //search 
+    searchCliente(): Observable<Cliente> {
+      return this.http.get<Cliente>(this.apiServer + '/search', this.httpOptions)
+    }
+
 
   /**
    * Handle Http operation that failed.
