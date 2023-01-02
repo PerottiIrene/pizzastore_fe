@@ -6,11 +6,26 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PizzaListComponent } from './pizza-list/pizza-list.component';
 import { PizzaCreateComponent } from './pizza-create/pizza-create.component';
+import { PizzaDetailComponent } from './pizza-detail/pizza-detail.component';
+import { PizzaUpdateComponent } from './pizza-update/pizza-update.component';
+import { PizzaDeleteComponent } from './pizza-delete/pizza-delete.component';
 
 const routes:Routes=[
   {
     path:'list',
     component:PizzaListComponent
+  },
+  {
+    path:'detail/:id',
+    component:PizzaDetailComponent
+  },
+  {
+    path:'edit/:id',
+    component:PizzaUpdateComponent
+  },
+  {
+    path:'delete/:id',
+    component:PizzaDeleteComponent
   },
   {
     path:'create',
@@ -26,7 +41,10 @@ const routes:Routes=[
 @NgModule({
   declarations: [
     PizzaListComponent,
-    PizzaCreateComponent
+    PizzaCreateComponent,
+    PizzaDetailComponent,
+    PizzaUpdateComponent,
+    PizzaDeleteComponent
   ],
   imports: [
     CommonModule,
