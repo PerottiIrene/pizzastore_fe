@@ -1,0 +1,52 @@
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+    <div class="container">
+
+        <div class='card'>
+            <div class='card-header'>
+                Visualizza dettaglio
+            </div>
+
+            <div class='card-body'>
+                <dl class="row">
+                    <dt class="col-sm-3 text-right">Id:</dt>
+                    <dd class="col-sm-9">{{selectedCliente?.id}}</dd>
+                </dl>
+
+                <dl class="row">
+                    <dt class="col-sm-3 text-right">Nome:</dt>
+                    <dd class="col-sm-9">{{selectedCliente?.nome}}</dd>
+                </dl>
+
+                <dl class="row">
+                    <dt class="col-sm-3 text-right">Cognome:</dt>
+                    <dd class="col-sm-9">{{selectedCliente?.cognome}}</dd>
+                </dl>
+
+                <dl class="row">
+                    <dt class="col-sm-3 text-right">Indirizzo:</dt>
+                    <dd class="col-sm-9">{{selectedCliente?.indirizzo}}</dd>
+                </dl>
+
+                <dl class="row">
+                    <dt class="col-sm-3 text-right">Attivo:</dt>
+                    <dd class="col-sm-9">{{selectedCliente?.attivo | decodificaBoolean}}</dd>
+                </dl>
+
+
+                <!-- end card body -->
+            </div>
+
+            <div class='card-footer'>
+                <a routerLink="/cliente/list" class='btn btn-outline-secondary'
+                    style='width:80px'>
+                    <i class='fa fa-chevron-left'></i> Back
+                </a>
+            </div>
+            <!-- end card -->
+        </div>
+
+        <!-- end container -->
+    </div>
+
+</main>

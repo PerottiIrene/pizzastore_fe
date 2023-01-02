@@ -1,0 +1,90 @@
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+    <div class="container">
+
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="errorMessage">
+            {{errorMessage}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Modifica elemento</h5>
+            </div>
+            <div class='card-body'>
+
+                <form (ngSubmit)="updateCliente(clienteForm)" #clienteForm="ngForm" class="row g-3">
+
+
+                    <div class="col-md-6">
+                        <label>Nome<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Inserire il nome" required minlength="4"
+                            id="nome" name="nome" [(ngModel)]="cliente.nome" #nomeVar="ngModel"
+                            [ngClass]="{'is-invalid': (nomeVar.touched || nomeVar.dirty) && !nomeVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="nomeVar.errors?.['required']">
+                                Prego inserire un valore
+                            </span>
+                            <span *ngIf="nomeVar.errors?.['minlength']">
+                                Il campo deve avere almeno due caratteri.
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Cognome<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Inserire il cognome" required minlength="4"
+                            id="cognome" name="cognome" [(ngModel)]="cliente.cognome" #cognomeVar="ngModel"
+                            [ngClass]="{'is-invalid': (cognomeVar.touched || cognomeVar.dirty) && !cognomeVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="cognomeVar.errors?.['required']">
+                                Prego inserire un valore
+                            </span>
+                            <span *ngIf="cognomeVar.errors?.['minlength']">
+                                Il campo deve avere almeno due caratteri.
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Indirizzo<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Inserire indirizzo" required
+                            minlength="4" id="indirizzo" name="indirizzo" [(ngModel)]="cliente.indirizzo"
+                            #indirizzoVar="ngModel"
+                            [ngClass]="{'is-invalid': (indirizzoVar.touched || indirizzoVar.dirty) && !indirizzoVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="indirizzoVar.errors?.['required']">
+                                Prego inserire un valore
+                            </span>
+                            <span *ngIf="indirizzoVar.errors?.['minlength']">
+                                Il campo deve avere almeno due caratteri.
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" name="submit" value="submit" id="submit"
+                            class="btn btn-primary">Conferma</button>
+                    </div>
+
+                    <div class='card-footer'>
+                        <a routerLink="/cliente/list" class='btn btn-outline-secondary'
+                            style='width:80px'>
+                            <i class='fa fa-chevron-left'></i> Back
+                        </a>
+                    </div>
+
+
+                </form>
+
+
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+        </div>
+        <!-- end container -->
+    </div>
+
+    <!-- end main -->
+</main>
