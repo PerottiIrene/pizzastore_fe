@@ -13,6 +13,10 @@ const routes: Routes = [
       loadChildren:()=> import('./features/cliente/cliente.module' ).then(m => m.ClienteModule),
     },
     {
+      path:'pizza',
+      loadChildren:()=> import('./features/pizza/pizza.module' ).then(m => m.PizzaModule),
+    },
+    {
       path:'login',
       loadChildren:()=> import('./core/auth/auth.module' ).then(m => m.AuthModule),
     },

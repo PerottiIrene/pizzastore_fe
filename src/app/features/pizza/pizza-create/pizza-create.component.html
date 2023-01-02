@@ -1,0 +1,86 @@
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+    <div class="container">
+
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="errorMessage">
+            {{errorMessage}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Inserisci nuovo elemento</h5>
+            </div>
+            <div class='card-body'>
+
+                <form (ngSubmit)="save(pizzaForm)" #pizzaForm="ngForm" class="row g-3">
+
+
+                    <div class="col-md-6">
+                        <label>Descrizione<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Inserire descrizione" required minlength="4"
+                            id="descrizione" name="descrizione" [(ngModel)]="pizza.descrizione" #descrizioneVar="ngModel"
+                            [ngClass]="{'is-invalid': (descrizioneVar.touched || descrizioneVar.dirty) && !descrizioneVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="descrizioneVar.errors?.['required']">
+                                Prego inserire un valore
+                            </span>
+                            <span *ngIf="descrizioneVar.errors?.['minlength']">
+                                Il campo deve avere almeno due caratteri.
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Ingredienti<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Inserire ingredienti" required minlength="4"
+                            id="ingredienti" name="ingredienti" [(ngModel)]="pizza.ingredienti" #ingredientiVar="ngModel"
+                            [ngClass]="{'is-invalid': (ingredientiVar.touched || ingredientiVar.dirty) && !ingredientiVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="ingredientiVar.errors?.['required']">
+                                Prego inserire un valore
+                            </span>
+                            <span *ngIf="ingredientiVar.errors?.['minlength']">
+                                Il campo deve avere almeno due caratteri.
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Prezzo<span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" placeholder="inserire prezzo"
+                            id="prezzo" name="prezzo" [(ngModel)]="pizza.prezzo" #prezzoVar="ngModel"
+                            [ngClass]="{'is-invalid': (prezzoVar.touched || prezzoVar.dirty) && !prezzoVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="prezzoVar.errors?.['required']">
+                                Prego inserire un valore
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" name="submit" value="submit" id="submit"
+                            class="btn btn-primary">Conferma</button>
+                    </div>
+
+                    <div class='card-footer'>
+                        <a routerLink="/pizza/list" class='btn btn-outline-secondary'
+                            style='width:80px'>
+                            <i class='fa fa-chevron-left'></i> Back
+                        </a>
+                    </div>
+
+
+                </form>
+
+
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+        </div>
+        <!-- end container -->
+    </div>
+
+    <!-- end main -->
+</main>
