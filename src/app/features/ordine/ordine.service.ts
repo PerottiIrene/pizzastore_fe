@@ -1,3 +1,4 @@
+import { Utente } from 'src/app/model/utente';
 import { Ordine } from './../../model/ordine';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -50,6 +51,10 @@ export class OrdineService {
    //DELETE 
    deleteOrdine(idInput:number):Observable<boolean>{
     return this.http.delete<boolean>(this.apiServer + '/' + idInput.toString(), this.httpOptions)
+  }
+
+  findAllFattorini(){
+    return this.http.get<Utente[]>('http://localhost:8080/api/utente/fattorini');
   }
 
   /**

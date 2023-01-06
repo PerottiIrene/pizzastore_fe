@@ -8,6 +8,6 @@ export interface Utente {
     token?:string;
     email?:string;
     dateCreated?:Date;
-    roles?: any;
+    ruoli?: any;
 
 }

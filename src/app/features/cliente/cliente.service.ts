@@ -1,3 +1,4 @@
+import { Ordine } from './../../model/ordine';
 import { Cliente } from './../../model/cliente';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -53,8 +54,8 @@ export class ClienteService {
   }
 
     //search 
-    searchCliente(): Observable<Cliente> {
-      return this.http.get<Cliente>(this.apiServer + '/search', this.httpOptions)
+    searchCliente(example:Ordine): Observable<Cliente[]> {
+      return this.http.post<Cliente[]>(this.apiServer + '/search',example, this.httpOptions)
     }
 
 

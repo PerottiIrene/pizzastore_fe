@@ -1,0 +1,102 @@
+<main class="flex-shrink-0">
+    <div class="container">
+
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="errorMessage">
+            {{errorMessage}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Modifica elemento</h5>
+            </div>
+            <div class='card-body'>
+
+                <form (ngSubmit)="updateOrdine(ordineForm)" #ordineForm="ngForm" class="row g-3">
+
+                    <div class="col-md-6">
+                        <label>Codice<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Inserire il codice" required minlength="4"
+                            id="codice" name="codice" [(ngModel)]="ordine.codice" #codiceVar="ngModel"
+                            [ngClass]="{'is-invalid': (codiceVar.touched || codiceVar.dirty) && !codiceVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="codiceVar.errors?.['required']">
+                                Prego inserire un valore
+                            </span>
+                            <span *ngIf="codiceVar.errors?.['minlength']">
+                                Il campo deve avere almeno due caratteri.
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class=" col-md-3">
+                        <label>Data <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" placeholder="dd/MM/yy" required id="data"
+                            name="data" title="formato : gg/mm/aaaa" [(ngModel)]="dataString"
+                            #dataVar="ngModel"
+                            [ngClass]="{'is-invalid': (dataVar.touched || dataVar.dirty) && !dataVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="!dataVar.valid">
+                                Il campo deve essere correttamente valorizzato
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="form-row">
+                        <label>Cliente <span class="text-danger">*</span></label>
+                        <select id="cliente" class="form-select" required name="cliente"
+                            [(ngModel)]="clienteId" #clienteVar="ngModel"
+                            [ngClass]="{'is-invalid': (clienteVar.touched || clienteVar.dirty) && !clienteVar.valid }">
+                            <option value="" selected> - Selezionare - </option>
+                            <option *ngFor="let clienteItem of clienti" value="{{clienteItem.id}}">{{clienteItem.cognome}} {{clienteItem.nome}}</option>
+                        </select>
+                        <span class="invalid-feedback">
+                            <span *ngIf="clienteVar.errors?.['required']">
+                                Prego selezionare un valore
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="form-row">
+                        <label>Fattorino <span class="text-danger">*</span></label>
+                        <select id="fattorino" class="form-select" required name="fattorino"
+                            [(ngModel)]="fattorinoId" #fattorinoVar="ngModel"
+                            [ngClass]="{'is-invalid': (fattorinoVar.touched || fattorinoVar.dirty) && !fattorinoVar.valid }">
+                            <option value="" selected> - Selezionare - </option>
+                            <option *ngFor="let fattorinoItem of fattorini" value="{{fattorinoItem.id}}">{{fattorinoItem.cognome}} {{fattorinoItem.nome}}</option>
+                        </select>
+                        <span class="invalid-feedback">
+                            <span *ngIf="fattorinoVar.errors?.['required']">
+                                Prego selezionare un valore
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="form-check">
+                        <label>Pizze <span class="text-danger">*</span></label>
+                        <label class="form-check-label">
+                          <option *ngFor="let pizzaItem of pizze" >
+                          <input type="checkbox" value="{{pizzaItem.id}}"> {{pizzaItem.descrizione}}</option>
+                        </label>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" name="submit" value="submit" id="submit"
+                            class="btn btn-primary">Conferma</button>
+                    </div>
+
+
+                </form>
+
+
+
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+        </div>
+        <!-- end container -->
+    </div>
+
+    <!-- end main -->
+</main>

@@ -17,6 +17,10 @@ const routes: Routes = [
       loadChildren:()=> import('./features/pizza/pizza.module' ).then(m => m.PizzaModule),
     },
     {
+      path:'ordine',
+      loadChildren:()=> import('./features/ordine/ordine.module' ).then(m => m.OrdineModule),
+    },
+    {
       path:'login',
       loadChildren:()=> import('./core/auth/auth.module' ).then(m => m.AuthModule),
     },
