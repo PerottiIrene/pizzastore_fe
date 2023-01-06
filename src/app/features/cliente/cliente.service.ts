@@ -54,7 +54,7 @@ export class ClienteService {
   }
 
     //search 
-    searchCliente(example:Ordine): Observable<Cliente[]> {
+    searchCliente(example:Cliente): Observable<Cliente[]> {
       return this.http.post<Cliente[]>(this.apiServer + '/search',example, this.httpOptions)
     }
 

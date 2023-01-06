@@ -48,7 +48,7 @@
                             class="btn btn-primary">Ricerca</button>
                     </div>
 
-                    <input class="btn btn-outline-warning" type="reset" value="Ripulisci">
+                    <input class="btn btn-outline-warning" type="reset"  style='width:80px' value="Ripulisci">
 
                     <div class='card-footer'>
                         <a routerLink="/cliente/list" class='btn btn-outline-secondary'
@@ -57,7 +57,50 @@
                         </a>
                     </div>
 
-
+                    <div class='card' *ngIf="clienti!.length > 0">
+                        <div class='card-header'>
+                            <h5>Lista dei risultati </h5>
+                        </div>
+                        <div class='card-body'>
+            
+                            <div class='table-responsive'>
+                                <table class='table table-hover'>
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Nome</th>
+                                            <th>Cognome</th>
+                                            <th>Indirizzo</th>
+                                            <th>Attivo</th>
+                                            <th>Azioni</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let clienteItem of clienti" [routerLink]="['/cliente',clienteItem.id]">
+                                            <td>{{clienteItem.id}}</td>
+                                            <td>{{clienteItem.nome}}</td>
+                                            <td>{{clienteItem.cognome}}</td>
+                                            <td>{{clienteItem.indirizzo}}</td>
+                                            <td>{{clienteItem.attivo | decodificaBoolean}}</td>
+                                            <td> <a
+                                                class="btn me-2  btn-sm btn-outline-secondary"
+                                                [routerLink]="['/cliente/detail', clienteItem.id]">Visualizza</a> 
+                                        
+                                                <a 
+                                                class="btn me-2  btn-sm btn-outline-primary"
+                                                [routerLink]="['/cliente/edit', clienteItem.id]">Modifica</a> 
+                                                <a 
+                                                class="btn me-2  btn-sm btn-outline-danger"
+                                                [routerLink]="['/cliente/delete', clienteItem.id]">Disattiva</a> 
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class='card-footer'>
+                                    <a class='btn me-2 btn-outline-primary' (click)="ripulisciRisultati()">
+                                      <i class='fa fa-chevron-left'></i> Ripulisci Risultati 
+                                   </a> 
+                            </div>
+                            
 
 
                 <!-- end card-body -->
