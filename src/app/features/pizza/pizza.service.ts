@@ -52,6 +52,11 @@ export class PizzaService {
     return this.http.delete<boolean>(this.apiServer + '/' + idInput.toString(), this.httpOptions)
   }
 
+  //search 
+  searchPizza(example:Pizza): Observable<Pizza[]> {
+    return this.http.post<Pizza[]>(this.apiServer + '/search',example, this.httpOptions)
+  }
+
 
    /**
    * Handle Http operation that failed.

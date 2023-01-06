@@ -9,6 +9,7 @@ import { PizzaCreateComponent } from './pizza-create/pizza-create.component';
 import { PizzaDetailComponent } from './pizza-detail/pizza-detail.component';
 import { PizzaUpdateComponent } from './pizza-update/pizza-update.component';
 import { PizzaDeleteComponent } from './pizza-delete/pizza-delete.component';
+import { PizzaSearchComponent } from './pizza-search/pizza-search.component';
 
 const routes:Routes=[
   {
@@ -32,6 +33,10 @@ const routes:Routes=[
     component:PizzaCreateComponent
   },
   {
+    path:'search',
+    component:PizzaSearchComponent
+  },
+  {
     path:'',
     redirectTo:'list',
     pathMatch:'full'
@@ -44,7 +49,8 @@ const routes:Routes=[
     PizzaCreateComponent,
     PizzaDetailComponent,
     PizzaUpdateComponent,
-    PizzaDeleteComponent
+    PizzaDeleteComponent,
+    PizzaSearchComponent
   ],
   imports: [
     CommonModule,

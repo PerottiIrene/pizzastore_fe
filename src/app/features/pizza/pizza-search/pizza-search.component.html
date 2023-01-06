@@ -1,0 +1,108 @@
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+    <div class="container">
+
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Ricerca elementi</h5>
+            </div>
+            <div class='card-body'>
+
+                <form (ngSubmit)="searchPizza(searchForm)" #searchForm="ngForm" class="row g-3">
+
+                    <div class="col-md-6">
+                        <label>Descrizione</label>
+                        <input type="text" class="form-control" placeholder="Inserire descrizione"
+                            id="descrizione" name="descrizione" [(ngModel)]="example!.descrizione" #descrizioneVar="ngModel" >
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Ingredienti</label>
+                        <input type="text" class="form-control" placeholder="Inserire ingredienti"
+                            id="ingredienti" name="ingredienti" [(ngModel)]="example!.ingredienti" #ingredientiVar="ngModel">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Prezzo</label>
+                        <input type="number" class="form-control" placeholder="Inserire prezzo"
+                            id="prezzo" name="prezzo" [(ngModel)]="example!.prezzo" #prezzoVar="ngModel">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="attivo" class="form-label">Stato </label>
+                        <select class="form-select" id="attivo" name="attivo" [(ngModel)]="example!.attivo" #cognomeVar="ngModel">
+                            <option value="" selected> - Selezionare - </option>
+                              <option value="true" >Pizze attive</option>
+                              <option value="false" >Pizze non attive</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" name="submit" value="submit" id="submit"
+                            class="btn btn-primary">Ricerca</button>
+                    </div>
+
+                    <input class="btn btn-outline-warning" type="reset"  style='width:80px' value="Ripulisci">
+
+                    <div class='card-footer'>
+                        <a routerLink="/pizza/list" class='btn btn-outline-secondary'
+                            style='width:80px'>
+                            <i class='fa fa-chevron-left'></i> Back
+                        </a>
+                    </div>
+
+                    <div class='card' *ngIf="pizze!.length > 0">
+                        <div class='card-header'>
+                            <h5>Lista dei risultati </h5>
+                        </div>
+                        <div class='card-body'>
+            
+                            <div class='table-responsive'>
+                                <table class='table table-hover'>
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Descrizione</th>
+                                            <th>Ingredienti</th>
+                                            <th>Prezzo</th>
+                                            <th>Attivo</th>
+                                            <th>Azioni</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let pizzaItem of pizze" [routerLink]="['/pizza',pizzaItem.id]">
+                                            <td>{{pizzaItem.id}}</td>
+                                            <td>{{pizzaItem.descrizione}}</td>
+                                            <td>{{pizzaItem.ingredienti}}</td>
+                                            <td>{{pizzaItem.prezzo}}</td>
+                                            <td>{{pizzaItem.attivo | decodificaBoolean}}</td>
+                                            <td> <a
+                                                class="btn me-2  btn-sm btn-outline-secondary"
+                                                [routerLink]="['/pizza/detail', pizzaItem.id]">Visualizza</a> 
+                                        
+                                                <a 
+                                                class="btn me-2  btn-sm btn-outline-primary"
+                                                [routerLink]="['/pizza/edit', pizzaItem.id]">Modifica</a> 
+                                                <a 
+                                                class="btn me-2  btn-sm btn-outline-danger"
+                                                [routerLink]="['/pizza/delete', pizzaItem.id]">Disattiva</a> 
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class='card-footer'>
+                                    <a class='btn me-2 btn-outline-primary' (click)="ripulisciRisultati()">
+                                      <i class='fa fa-chevron-left'></i> Ripulisci Risultati 
+                                   </a> 
+                            </div>
+                            
+
+
+                <!-- end card-body -->
+            <!-- </div> -->
+            <!-- end card -->
+        <!-- </div> -->
+        <!-- end container -->
+    <!-- </div> -->
+
+    <!-- end main -->
+<!-- </main> -->

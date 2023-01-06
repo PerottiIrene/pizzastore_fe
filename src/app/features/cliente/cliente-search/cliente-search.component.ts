@@ -22,9 +22,7 @@ constructor(private clienteService:ClienteService,
   this.clienteService.searchCliente(this.example!).subscribe({
     next: clienteItem => {
       this.clienti = clienteItem;
-      // this.errorMessage = '';
     },
-    // error: () => this.errorMessage = 'Attenzione! Inserimento fallito!',
   });
   }
 
