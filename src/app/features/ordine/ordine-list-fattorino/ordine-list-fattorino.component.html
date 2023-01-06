@@ -1,0 +1,55 @@
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+    <div class="container">
+
+        <div class="alert alert-success alert-dismissible fade show " role="alert" *ngIf="confirmMessage">
+            {{confirmMessage}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Ordini da consegnare</h5>
+            </div>
+            <div class='card-body'>
+
+                <div class='table-responsive'>
+                    <table class='table table-hover'>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Data</th>
+                                <th>Codice</th>
+                                <th>Costo Totale</th>
+                                <th>Chiuso</th>
+                                <th>Azioni</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ordineItem of ordini" [routerLink]="['/ordine',ordineItem.id]">
+                                <td>{{ordineItem.id}}</td>
+                                <td>{{ordineItem.data | date:'dd/MM/yyyy'}}</td>
+                                <td>{{ordineItem.codice}}</td>
+                                <td>{{ordineItem.costoTotale}}</td>
+                                <td>{{ordineItem.chiuso | decodificaBoolean}}</td>
+                                <td> <a
+                                    class="btn me-2  btn-sm btn-outline-secondary"
+                                    [routerLink]="['/ordine/detail', ordineItem.id]">Visualizza</a> 
+                            
+                                    <a 
+                                    class="btn me-2  btn-sm btn-outline-danger"
+                                    [routerLink]="['/ordine/delete', ordineItem.id]">Chiudi</a> 
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+        </div>
+
+        <!-- end container -->
+    </div>
+
+</main>

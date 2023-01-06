@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent {
+  confirmMessage: string = '';
 
 }

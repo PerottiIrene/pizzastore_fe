@@ -62,6 +62,10 @@ export class OrdineService {
     return this.http.post<Ordine[]>(this.apiServer + '/search',example, this.httpOptions)
   }
 
+  ordiniByfattorino():Observable<Ordine[]>{
+    return this.http.get<Ordine[]>(this.apiServer + '/ordiniFattorino', this.httpOptions)
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

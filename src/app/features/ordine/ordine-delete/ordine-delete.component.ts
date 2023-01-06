@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class OrdineDeleteComponent implements OnInit{
   ordine?: Ordine
   errorMessage: string = '';
+  view?: string;
 
   constructor(private ordineService:OrdineService,
     private route:ActivatedRoute,
@@ -25,7 +26,7 @@ export class OrdineDeleteComponent implements OnInit{
 
   deleteOrdine() {
     this.ordineService.deleteOrdine(this.ordine?.id!).subscribe()
-    this.router.navigate(["ordine/list"])
+    this.router.navigate(["welcome"] ,{ queryParams: { confirmMessage: 'Ordine chiuso con successo!.' } })
   }
 
 

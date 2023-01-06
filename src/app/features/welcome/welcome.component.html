@@ -24,12 +24,18 @@
 </svg>
 <!-- ############## end ###################  -->
 
+
 <!-- Begin page content -->
 <main class="flex-shrink-0">
     <div class="container">
 
         <div class="alert alert-danger alert-dismissible fade show d-none" role="alert">
             Test
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class="alert alert-success alert-dismissible fade show " role="alert" *ngIf="confirmMessage">
+            {{confirmMessage}}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
@@ -54,10 +60,10 @@
                         <use xlink:href="#collection" />
                     </svg>
                 </div>
-                <h2>Ricerca Registi</h2>
+                <h2>Ordini da consegnare</h2>
                 <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
                     and probably just keep going until we run out of words.</p>
-                <a href="" class="icon-link">
+                <a routerLink="/ordine/ordiniFattorino" class="icon-link">
                     Vai alla funzionalità
                     <svg class="bi" width="1em" height="1em">
                         <use xlink:href="#chevron-right" />

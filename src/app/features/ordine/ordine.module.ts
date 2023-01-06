@@ -10,6 +10,7 @@ import { OrdineDeleteComponent } from './ordine-delete/ordine-delete.component';
 import { OrdineCreateComponent } from './ordine-create/ordine-create.component';
 import { OrdineUpdateComponent } from './ordine-update/ordine-update.component';
 import { OrdineSearchComponent } from './ordine-search/ordine-search.component';
+import { OrdineListFattorinoComponent } from './ordine-list-fattorino/ordine-list-fattorino.component';
 
 const routes:Routes=[
   {
@@ -37,6 +38,10 @@ const routes:Routes=[
     component:OrdineSearchComponent
   },
   {
+    path:'ordiniFattorino',
+    component:OrdineListFattorinoComponent
+  },
+  {
     path:'',
     redirectTo:'list',
     pathMatch:'full'
@@ -51,7 +56,8 @@ const routes:Routes=[
     OrdineDeleteComponent,
     OrdineCreateComponent,
     OrdineUpdateComponent,
-    OrdineSearchComponent
+    OrdineSearchComponent,
+    OrdineListFattorinoComponent
   ],
   imports: [
     CommonModule,
