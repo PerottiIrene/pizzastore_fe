@@ -57,6 +57,11 @@ export class OrdineService {
     return this.http.get<Utente[]>('http://localhost:8080/api/utente/fattorini');
   }
 
+   //search 
+   searchOrdine(example:Ordine): Observable<Ordine[]> {
+    return this.http.post<Ordine[]>(this.apiServer + '/search',example, this.httpOptions)
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

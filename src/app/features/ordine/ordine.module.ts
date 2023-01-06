@@ -9,6 +9,7 @@ import { OrdineDetailComponent } from './ordine-detail/ordine-detail.component';
 import { OrdineDeleteComponent } from './ordine-delete/ordine-delete.component';
 import { OrdineCreateComponent } from './ordine-create/ordine-create.component';
 import { OrdineUpdateComponent } from './ordine-update/ordine-update.component';
+import { OrdineSearchComponent } from './ordine-search/ordine-search.component';
 
 const routes:Routes=[
   {
@@ -32,6 +33,10 @@ const routes:Routes=[
     component:OrdineDeleteComponent
   },
   {
+    path:'search',
+    component:OrdineSearchComponent
+  },
+  {
     path:'',
     redirectTo:'list',
     pathMatch:'full'
@@ -45,7 +50,8 @@ const routes:Routes=[
     OrdineDetailComponent,
     OrdineDeleteComponent,
     OrdineCreateComponent,
-    OrdineUpdateComponent
+    OrdineUpdateComponent,
+    OrdineSearchComponent
   ],
   imports: [
     CommonModule,

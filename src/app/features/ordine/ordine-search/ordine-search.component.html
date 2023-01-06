@@ -1,0 +1,128 @@
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+    <div class="container">
+
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Ricerca elementi</h5>
+            </div>
+            <div class='card-body'>
+
+                <form (ngSubmit)="searchOrdine(searchForm)" #searchForm="ngForm" class="row g-3">
+
+                    <div class="col-md-6">
+                        <label>Codice</label>
+                        <input type="text" class="form-control" placeholder="Inserire codice"
+                            id="codice" name="codice" [(ngModel)]="example!.codice" #codiceVar="ngModel" >
+                    </div>
+
+                    <div class=" col-md-3">
+                        <label>Data </label>
+                        <input type="date" class="form-control" placeholder="dd/MM/yy" required id="data"
+                            name="data" title="formato : gg/mm/aaaa" [(ngModel)]="example!.data"
+                            #dataVar="ngModel">
+                    </div>
+
+                    <div class="form-row">
+                        <label>Cliente </label>
+                        <select id="cliente" class="form-select" required name="cliente"
+                            [(ngModel)]="example!.cliente!.id" #clienteVar="ngModel">
+                            <option value="" selected> - Selezionare - </option>
+                            <option *ngFor="let clienteItem of clienti" value="{{clienteItem.id}}">{{clienteItem.cognome}} {{clienteItem.nome}} </option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label>Fattorino </label>
+                        <select id="fattorino" class="form-select" required name="fattorino"
+                            [(ngModel)]="example!.fattorino!.id" #fattorinoVar="ngModel">
+                            <option value="" selected> - Selezionare - </option>
+                            <option *ngFor="let fattorinoItem of fattorini" value="{{fattorinoItem.id}}">{{fattorinoItem.cognome}} {{fattorinoItem.nome}}</option>
+                        </select>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <label>Costo Totale</label>
+                        <input type="number" class="form-control" placeholder="Inserire costo totale"
+                            id="costoTotale" name="costoTotale" [(ngModel)]="example!.costoTotale" #costoTotaleVar="ngModel">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="chiuso" class="form-label">Stato </label>
+                        <select class="form-select" id="chiuso" name="chiuso" [(ngModel)]="example!.chiuso" #chiusoVar="ngModel">
+                            <option value="" selected> - Selezionare - </option>
+                              <option value="true" >Ordini chiusi</option>
+                              <option value="false" >Ordini aperti</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" name="submit" value="submit" id="submit"
+                            class="btn btn-primary">Ricerca</button>
+                    </div>
+
+                    <input class="btn btn-outline-warning" type="reset"  style='width:80px' value="Ripulisci">
+
+                    <div class='card-footer'>
+                        <a routerLink="/ordine/list" class='btn btn-outline-secondary'
+                            style='width:80px'>
+                            <i class='fa fa-chevron-left'></i> Back
+                        </a>
+                    </div>
+
+                    <div class='card' *ngIf="ordini!.length > 0">
+                        <div class='card-header'>
+                            <h5>Lista dei risultati </h5>
+                        </div>
+                        <div class='card-body'>
+            
+                            <div class='table-responsive'>
+                                <table class='table table-hover'>
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Codice</th>
+                                            <th>Costo Totale</th>
+                                            <th>Data</th>
+                                            <th>Chiuso</th>
+                                            <th>Azioni</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let ordineItem of ordini" [routerLink]="['/ordine',ordineItem.id]">
+                                            <td>{{ordineItem.id}}</td>
+                                            <td>{{ordineItem.codice}}</td>
+                                            <td>{{ordineItem.data | date:'dd/MM/yyyy'}}</td>
+                                            <td>{{ordineItem.costoTotale}}</td>
+                                            <td>{{ordineItem.chiuso | decodificaBoolean}}</td>
+                                            <td> <a
+                                                class="btn me-2  btn-sm btn-outline-secondary"
+                                                [routerLink]="['/ordine/detail', ordineItem.id]">Visualizza</a> 
+                                        
+                                                <a 
+                                                class="btn me-2  btn-sm btn-outline-primary"
+                                                [routerLink]="['/ordine/edit', ordineItem.id]">Modifica</a> 
+                                                <a 
+                                                class="btn me-2  btn-sm btn-outline-danger"
+                                                [routerLink]="['/ordine/delete', ordineItem.id]">Disattiva</a> 
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class='card-footer'>
+                                    <a class='btn me-2 btn-outline-primary' (click)="ripulisciRisultati()">
+                                      <i class='fa fa-chevron-left'></i> Ripulisci Risultati 
+                                   </a> 
+                            </div>
+                            
+
+
+                <!-- end card-body -->
+            <!-- </div> -->
+            <!-- end card -->
+        <!-- </div> -->
+        <!-- end container -->
+    <!-- </div> -->
+
+    <!-- end main -->
+<!-- </main> -->
