@@ -56,6 +56,12 @@
                       <div *ngIf="statistiche!.listaClienti!.length >0">
                         <h5>  Clienti Virtuosi: {{statistiche?.listaClienti}}</h5>
                       </div>
+                      
+                      <div class='card-footer' *ngIf="statistiche!.listaClienti!.length >0 || statistiche!.numeroPizze! >0 || statistiche!.ricaviTotali! >0 || statistiche!.listaClienti!.length >0">
+                        <a class='btn me-2 btn-outline-primary' (click)="ripulisciRisultati()">
+                          <i class='fa fa-chevron-left'></i> Ripulisci Risultati 
+                       </a> 
+                </div>
 
 
                 </form>

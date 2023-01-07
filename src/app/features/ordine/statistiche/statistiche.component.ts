@@ -18,7 +18,9 @@ export class StatisticheComponent {
     dataFine:new Date
   }
 
-  statistiche?:Statistiche
+  statistiche?:Statistiche={
+    listaClienti:[]
+  }
 
   constructor(private  http:HttpClient,
     private ordineService:OrdineService){}
@@ -29,6 +31,12 @@ export class StatisticheComponent {
     });
   }
 
+  ripulisciRisultati(){
+    this.statistiche!.listaClienti=[]
+    this.statistiche!.numeroOrdini=0
+    this.statistiche!.numeroPizze=0
+    this.statistiche!.ricaviTotali=0
+  }
   
 }
 
