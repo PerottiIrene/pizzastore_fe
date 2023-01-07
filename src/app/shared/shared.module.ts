@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { IsLoggedDirective } from './directives/is-logged.directive';
 import { DecodificaBooleanPipe } from './pipes/decodifica-boolean.pipe';
+import { IsRoleDirective } from './directives/is-role.directive';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -9,13 +10,15 @@ import { DecodificaBooleanPipe } from './pipes/decodifica-boolean.pipe';
   declarations: [
     IsLoggedDirective,
     DecodificaBooleanPipe,
+    IsRoleDirective
   ],
   imports: [
     CommonModule
   ],
   exports:[
     IsLoggedDirective,
-    DecodificaBooleanPipe
+    DecodificaBooleanPipe,
+    IsRoleDirective
   ]
 })
 export class SharedModule { }

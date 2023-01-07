@@ -44,7 +44,7 @@
                 <h1 class="display-5 fw-bold"> Pizza Store</h1>
                 <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one
                     in previous versions of Bootstrap. </p>
-                <a class="btn btn-primary btn-lg"  routerLink="/cliente/list">Vai a
+                <a isRole='["ROLE_ADMIN"]' class="btn btn-primary btn-lg" routerLink="/cliente/list">Vai a
                     Lista clienti</a>
             </div>
         </div>
@@ -54,7 +54,7 @@
     <!--  features di bootstrap 'Columns with icons'  -->
     <div class="container px-4 py-5" id="featured-3">
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-            <div class="feature col">
+            <div class="feature col" isRole='["ROLE_FATTORINO"]'>
                 <div class="feature-icon bg-primary bg-gradient">
                     <svg class="bi" width="1em" height="1em">
                         <use xlink:href="#collection" />
@@ -70,13 +70,13 @@
                     </svg>
                 </a>
             </div>
-            <div class="feature col">
+            <div class="feature col" isRole='["ROLE_PIZZAIOLO"]'>
                 <div class="feature-icon bg-primary bg-gradient">
                     <svg class="bi" width="1em" height="1em">
                         <use xlink:href="#people-circle" />
                     </svg>
                 </div>
-                <h2>Lista ordini</h2>
+                <h2>Gestione ordini</h2>
                 <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
                     and probably just keep going until we run out of words.</p>
                 <a routerLink="/ordine/list" class="icon-link">
@@ -86,13 +86,29 @@
                     </svg>
                 </a>
             </div>
-            <div class="feature col">
+            <div class="feature col" isRole='["ROLE_PIZZAIOLO"]'>
+                <div class="feature-icon bg-primary bg-gradient">
+                    <svg class="bi" width="1em" height="1em">
+                        <use xlink:href="#people-circle" />
+                    </svg>
+                </div>
+                <h2>Nuovo ordine</h2>
+                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
+                    and probably just keep going until we run out of words.</p>
+                <a routerLink="/ordine/create" class="icon-link">
+                    Vai alla funzionalità
+                    <svg class="bi" width="1em" height="1em">
+                        <use xlink:href="#chevron-right" />
+                    </svg>
+                </a>
+            </div>
+            <div class="feature col" isRole='["ROLE_PIZZAIOLO"]' >
                 <div class="feature-icon bg-primary bg-gradient">
                     <svg class="bi" width="1em" height="1em">
                         <use xlink:href="#toggles2" />
                     </svg>
                 </div>
-                <h2>Lista pizze</h2>
+                <h2>Gestione pizze</h2>
                 <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
                     and probably just keep going until we run out of words.</p>
                 <a routerLink="/pizza/list" class="icon-link">
@@ -102,16 +118,32 @@
                     </svg>
                 </a>
             </div>
-            <div class="feature col">
+            <div class="feature col" isRole='["ROLE_PROPRIETARIO"]'>
                 <div class="feature-icon bg-primary bg-gradient">
                     <svg class="bi" width="1em" height="1em">
                         <use xlink:href="#collection" />
                     </svg>
                 </div>
-                <h2>Statistiche</h2>
+                <h2>Statistiche Varie</h2>
                 <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
                     and probably just keep going until we run out of words.</p>
                 <a routerLink="/ordine/statistiche" class="icon-link">
+                    Vai alla funzionalità
+                    <svg class="bi" width="1em" height="1em">
+                        <use xlink:href="#chevron-right" />
+                    </svg>
+                </a>
+            </div>
+            <div class="feature col" isRole='["ROLE_PROPRIETARIO"]'>
+                <div class="feature-icon bg-primary bg-gradient">
+                    <svg class="bi" width="1em" height="1em">
+                        <use xlink:href="#collection" />
+                    </svg>
+                </div>
+                <h2>Report ordini</h2>
+                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
+                    and probably just keep going until we run out of words.</p>
+                <a routerLink="/ordine/search" class="icon-link">
                     Vai alla funzionalità
                     <svg class="bi" width="1em" height="1em">
                         <use xlink:href="#chevron-right" />
