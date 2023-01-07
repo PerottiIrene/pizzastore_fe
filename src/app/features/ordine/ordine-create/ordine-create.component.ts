@@ -14,41 +14,41 @@ import { Utente } from 'src/app/model/utente';
   templateUrl: './ordine-create.component.html',
   styleUrls: ['./ordine-create.component.css']
 })
-export class OrdineCreateComponent implements OnInit{
+export class OrdineCreateComponent implements OnInit {
 
-  ordine: Ordine={}
+  ordine: Ordine = {}
   clienteId?: number;
-  pizzaIds?:number[]=[];
+  pizzaIds?: number[] = [];
   clienti: Cliente[] = [];
-  pizze:Pizza[]=[]
-  fattorini:Utente[]=[]
-  fattorinoId?:number;
+  pizze: Pizza[] = []
+  fattorini: Utente[] = []
+  fattorinoId?: number;
   errorMessage: string = '';
 
-  constructor(private ordineService:OrdineService,
-    private clienteService:ClienteService,
-    private pizzaService:PizzaService,
-    private router:Router){}
+  constructor(private ordineService: OrdineService,
+    private clienteService: ClienteService,
+    private pizzaService: PizzaService,
+    private router: Router) { }
 
   ngOnInit(): void {
-   this.clienteService.getClienti().subscribe(clienteListItem => this.clienti = clienteListItem);
-   this.pizzaService.getPizze().subscribe(pizzaListItem =>this.pizze=pizzaListItem)
-    this.ordineService.findAllFattorini().subscribe(result => this.fattorini=result)
+    this.clienteService.getClienti().subscribe(clienteListItem => this.clienti = clienteListItem);
+    this.pizzaService.getPizze().subscribe(pizzaListItem => this.pizze = pizzaListItem)
+    this.ordineService.findAllFattorini().subscribe(result => this.fattorini = result)
   }
 
   save(ordineForm: NgForm): void {
     console.log('sub ' + JSON.stringify(this.ordine));
     if (ordineForm.valid) {
-      this.ordine.cliente=this.clienti.find(clienteItem => 
-        this.clienteId==clienteItem.id)
+      this.ordine.cliente = this.clienti.find(clienteItem =>
+        this.clienteId == clienteItem.id)
       this.pizze.forEach(pizzaItem => {
         if (this.pizzaIds == pizzaItem.id) {
-             this.pizze.push(pizzaItem);
-       }
+          this.pizze.push(pizzaItem);
+        }
       });
       this.ordine.pizze = this.pizze;
-          this.ordine.fattorino=this.fattorini.find(fattorinoItem => 
-            this.fattorinoId==fattorinoItem.id)
+      this.ordine.fattorino = this.fattorini.find(fattorinoItem =>
+        this.fattorinoId == fattorinoItem.id)
       this.ordineService.addOrdine(this.ordine).subscribe({
         next: ordineItem => {
           this.ordine = ordineItem;
@@ -64,7 +64,7 @@ export class OrdineCreateComponent implements OnInit{
       this.errorMessage = 'Attenzione! Operazione fallita! Il form non è stato validato';
   }
 
-  
-  
+
+
 
 }

@@ -11,6 +11,7 @@ import { OrdineCreateComponent } from './ordine-create/ordine-create.component';
 import { OrdineUpdateComponent } from './ordine-update/ordine-update.component';
 import { OrdineSearchComponent } from './ordine-search/ordine-search.component';
 import { OrdineListFattorinoComponent } from './ordine-list-fattorino/ordine-list-fattorino.component';
+import { StatisticheComponent } from './statistiche/statistiche.component';
 
 const routes:Routes=[
   {
@@ -42,6 +43,10 @@ const routes:Routes=[
     component:OrdineListFattorinoComponent
   },
   {
+    path:'statistiche',
+    component:StatisticheComponent
+  },
+  {
     path:'',
     redirectTo:'list',
     pathMatch:'full'
@@ -57,7 +62,8 @@ const routes:Routes=[
     OrdineCreateComponent,
     OrdineUpdateComponent,
     OrdineSearchComponent,
-    OrdineListFattorinoComponent
+    OrdineListFattorinoComponent,
+    StatisticheComponent
   ],
   imports: [
     CommonModule,

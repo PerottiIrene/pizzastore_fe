@@ -1,8 +1,11 @@
+import { Statistiche } from './../../model/statistiche';
+import { DateStats } from './../../model/date-stats';
 import { Utente } from 'src/app/model/utente';
 import { Ordine } from './../../model/ordine';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
+import { Cliente } from 'src/app/model/cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +20,10 @@ export class OrdineService {
   }
 
   constructor(private http:HttpClient) { }
+  ricaviTotali?:number;
+  numeroOrdini?:number
+  numeroPizze?:number
+  listaClienti:Cliente[]=[]
 
   /** GET registi from the server */
   getOrdini(): Observable<Ordine[]> {
@@ -66,6 +73,10 @@ export class OrdineService {
     return this.http.get<Ordine[]>(this.apiServer + '/ordiniFattorino', this.httpOptions)
   }
 
+  getStatistiche(dateInput: DateStats) {
+    return this.http.post<Statistiche>(this.apiServer +'/statistiche', dateInput,this.httpOptions);
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
@@ -87,3 +98,5 @@ export class OrdineService {
   }
 
 }
+
+

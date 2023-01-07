@@ -1,0 +1,73 @@
+<main class="flex-shrink-0">
+    <div class="container">
+
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Inserisci le date (da-a) per avere delle statistiche</h5>
+            </div>
+            <div class='card-body'>
+
+                <form (ngSubmit)="loadStatistiche(statForm)" #statForm="ngForm" class="row g-3">
+
+                    <div class=" col-md-3">
+                        <label>Data Inizio<span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" placeholder="dd/MM/yy" required id="data"
+                            name="dataInizio" title="formato : gg/mm/aaaa" [(ngModel)]="date!.dataInizio"
+                            #dataInizioVar="ngModel"
+                            [ngClass]="{'is-invalid': (dataInizioVar.touched || dataInizioVar.dirty) && !dataInizioVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="!dataInizioVar.valid">
+                                Il campo deve essere correttamente valorizzato
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class=" col-md-3">
+                        <label>Data Fine<span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" placeholder="dd/MM/yy" required id="data"
+                            name="dataFine" title="formato : gg/mm/aaaa" [(ngModel)]="date!.dataFine"
+                            #dataFineVar="ngModel"
+                            [ngClass]="{'is-invalid': (dataFineVar.touched || dataFineVar.dirty) && !dataFineVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="!dataFineVar.valid">
+                                Il campo deve essere correttamente valorizzato
+                            </span>
+                        </span>
+                    </div>
+
+             
+                    <div class="col-12">
+                        <button type="submit" name="submit" value="submit" id="submit"
+                            class="btn btn-primary">Conferma</button>
+                    </div>
+
+                    <div *ngIf="statistiche!.numeroOrdini! >0">
+                        <h5> Numero ordini: {{statistiche?.numeroOrdini}}</h5>
+                      </div>
+
+                      <div *ngIf="statistiche!.numeroPizze! >0">
+                        <h5>  Numero Pizze ordinate: {{statistiche?.numeroPizze}}</h5>
+                      </div>
+
+                      <div *ngIf="statistiche!.ricaviTotali! >0">
+                        <h5>Ricavi totali: {{statistiche?.ricaviTotali}}</h5>
+                      </div>
+
+                      <div *ngIf="statistiche!.listaClienti!.length >0">
+                        <h5>  Clienti Virtuosi: {{statistiche?.listaClienti}}</h5>
+                      </div>
+
+
+                </form>
+
+
+
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+        </div>
+        <!-- end container -->
+    </div>
+
+    <!-- end main -->
+</main>
