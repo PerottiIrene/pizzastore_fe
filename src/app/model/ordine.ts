@@ -4,7 +4,7 @@ import { Utente } from './utente';
 export interface Ordine {
 
     id?:number;
-    data?:any;
+    data?:Date;
     codice?:string;
     costoTotale?:number;
     chiuso?:boolean;

@@ -16,7 +16,9 @@ import { Utente } from 'src/app/model/utente';
 })
 export class OrdineCreateComponent implements OnInit {
 
-  ordine: Ordine = {}
+  ordine: Ordine = {
+    pizze:[]
+  }
   clienteId?: number;
   pizzaIds?: number[] = [];
   clienti: Cliente[] = [];
@@ -41,12 +43,6 @@ export class OrdineCreateComponent implements OnInit {
     if (ordineForm.valid) {
       this.ordine.cliente = this.clienti.find(clienteItem =>
         this.clienteId == clienteItem.id)
-      this.pizze.forEach(pizzaItem => {
-        if (this.pizzaIds == pizzaItem.id) {
-          this.pizze.push(pizzaItem);
-        }
-      });
-      this.ordine.pizze = this.pizze;
       this.ordine.fattorino = this.fattorini.find(fattorinoItem =>
         this.fattorinoId == fattorinoItem.id)
       this.ordineService.addOrdine(this.ordine).subscribe({
@@ -64,7 +60,13 @@ export class OrdineCreateComponent implements OnInit {
       this.errorMessage = 'Attenzione! Operazione fallita! Il form non è stato validato';
   }
 
-
+  addPizza(idPizza:any){
+    this.pizze.forEach(pizzaItem => {
+      if (idPizza == pizzaItem.id) {
+        this.ordine.pizze!.push(pizzaItem);
+      }
+    });
+  }
 
 
 }

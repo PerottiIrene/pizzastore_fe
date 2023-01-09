@@ -73,13 +73,25 @@
                         </span>
                     </div>
 
-                 <div class="form-check">
+                 <!-- <div class="form-check">
                     <label>Pizze <span class="text-danger">*</span></label>
                     <label class="form-check-label">
                       <option *ngFor="let pizzaItem of pizze" >
-                      <input type="checkbox" value="{{pizzaItem.id}}"> {{pizzaItem.descrizione}}</option>
+                      <input type="checkbox" class="form-check-input" value="{{pizzaItem.id}}"> {{pizzaItem.descrizione}}</option>
                     </label>
-                </div>
+                </div> -->
+                <ng-container *ngFor="let pizzaItem of pizze">
+                <div class="form-check">
+                    <input mdbCheckbox
+                      class="form-check-input" (click)="addPizza(pizzaItem.id)"
+                      type="checkbox"
+                      value="{{pizzaItem.id}}"
+                      id="flexCheckDefault" />
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{pizzaItem.descrizione}}
+                    </label>
+                  </div>
+                </ng-container>
              
                     <div class="col-12">
                         <button type="submit" name="submit" value="submit" id="submit"
@@ -87,15 +99,8 @@
                     </div>
 
                     <div class='card-footer'>
-                        <a routerLink="/welcome" class='btn btn-outline-secondary'
-                            style='width:80px'>
-                            <i class='fa fa-chevron-left'></i> Home
-                        </a>
-                    </div>
-
-                    <div class='card-footer'>
                         <a routerLink="/ordine/list" class='btn btn-outline-secondary'>
-                            <i class='fa fa-chevron-left'></i> Torna alla lista
+                            <i class='fa fa-chevron-left'></i> Vai alla lista
                         </a>
                     </div>
 

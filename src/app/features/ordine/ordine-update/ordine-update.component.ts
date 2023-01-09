@@ -8,6 +8,7 @@ import { Ordine } from './../../../model/ordine';
 import { Component, OnInit } from '@angular/core';
 import { Pizza } from 'src/app/model/pizza';
 import { NgForm } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-ordine-update',
@@ -19,6 +20,7 @@ export class OrdineUpdateComponent implements OnInit{
   ordine:Ordine={}
   errorMessage:string=''
   fattorinoId?: number;
+  pizzaId?: number;
   clienteId?:number;
   pizzaIds?:number[]=[];
   clienti: Cliente[] = [];
@@ -39,17 +41,19 @@ export class OrdineUpdateComponent implements OnInit{
     let idOrdine=Number(this.route.snapshot.paramMap.get('id'));
     this.ordineService.getOrdine(idOrdine).subscribe((ordineItem : Ordine) => {
       this.ordine = ordineItem;
-      console.log(ordineItem.data)
       this.fattorinoId = ordineItem.fattorino?.id;
       this.clienteId=ordineItem.cliente?.id;
-      if (this.ordine.pizze) {
-        for (let pizza of this.ordine.pizze) {
+      // if (this.ordine.pizze) {
+        for (let pizza of ordineItem.pizze!) {
           this.pizzaIds!.push(pizza.id!);
         }
-      }
+        // this.pizzaId= this.pizze.find(pizza => pizza.id === this.ordine.pizze)?.id;
+      // }
       this.dataString=this.ordine!.data?.toISOString().split('T')[0]
+      // var date:Date=new Date(this.ordine!.data?[2]:this.ordine!.data?[1]:this.ordine!.data?[0])
       // this.dataString=this.ordine.data?.toDateString()
       // this.dataString = this.ordine.data?.toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' });
+      // this.convertMillisecondsToDateString(this.ordine.data)
       })  
   }
 
@@ -59,16 +63,11 @@ export class OrdineUpdateComponent implements OnInit{
         this.clienteId==clienteItem.id)
         this.ordine.fattorino=this.fattorini.find(fattorinoItem => 
         this.fattorinoId==fattorinoItem.id)
-        this.pizze.forEach(pizzaItem => {
-            if (this.pizzaIds == pizzaItem.id) {
-                 this.pizze.push(pizzaItem);
-            }
-          })
-        this.ordine.pizze = this.pizze;
         this.ordineService.updateOrdine(this.ordine).subscribe(
         ordineItem => {
           console.log('modificato ' + JSON.stringify(ordineItem));
           this.ordine = ordineItem;
+          this.ordine.data=new Date(this.dataString!)
         },
         
         err => this.errorMessage = err,
@@ -78,6 +77,24 @@ export class OrdineUpdateComponent implements OnInit{
       this.errorMessage = 'Attenzione! Operazione fallita! Il form non è stato validato'
     }
   }
+
+  addPizza(idPizza:any){
+    this.pizze.forEach(pizzaItem => {
+      if (idPizza == pizzaItem.id) {
+        this.ordine.pizze!.push(pizzaItem);
+      }
+    });
+  }
+
+  //  convertMillisecondsToDateString(milliseconds: number): string {
+  //   const datePipe = new DatePipe('en-US');
+  //   return datePipe.transform(milliseconds, 'dd/MM/yyyy')!;
+  // }
+  // convertMillisecondsToDateString(date:Date){
+  //   return date.getFullYear() + '-' + ('0' + (
+  //     date.getMonth() +1)).slice(-2) + '-' + ('0' +date.getDate()).slice(-2)
+  // }
+
 
 }
   
